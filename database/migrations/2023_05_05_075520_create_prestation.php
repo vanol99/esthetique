@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('prestations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->text('description');
+            $table->foreignId('reservation_id');
+            $table->foreignId('soin_id');
         });
     }
 

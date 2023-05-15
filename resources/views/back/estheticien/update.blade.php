@@ -37,7 +37,8 @@
                                     </div>
 
                                 </div>
-                                <div class="mb-3 d-grid text-center">
+                                <div class="mb-3 text-center">
+                                    <a class="btn btn-warning" type="button" href="{{route('esheticien.index')}}"><i class="mdi mdi-arrow-left"></i> annuler </a>
                                     <button class="btn btn-success" type="submit"> Modifier </button>
                                 </div>
                             </form>

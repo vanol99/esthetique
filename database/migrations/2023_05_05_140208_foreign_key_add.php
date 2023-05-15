@@ -30,7 +30,11 @@ return new class extends Migration
         Schema::table('reservations', function (Blueprint $table) {
            // $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('customer_id')->references('id')->on('users');
+            //$table->foreign('soin_id')->references('id')->on('soins');
+        });
+        Schema::table('prestations', function (Blueprint $table) {
             $table->foreign('soin_id')->references('id')->on('soins');
+            $table->foreign('reservation_id')->references('id')->on('reservations');
         });
     }
 

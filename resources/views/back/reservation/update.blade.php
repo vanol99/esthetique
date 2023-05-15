@@ -14,7 +14,24 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5>Detail reservation</h5>
-                                <dl class="row-md jh-entity-details">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <th>#</th>
+                                    <th>Soin</th>
+                                    <th>Prix</th>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($prestations as $prestation)
+                                        <tr>
+                                            <td></td>
+                                            <td>{{$prestation->soin->libelle}}</td>
+                                            <td>{{$prestation->soin->price}}</td>
+
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                               {{-- <dl class="row-md jh-entity-details">
                                     <dt>Date</dt>
                                     <dd>{{$soin->date_reservation}}</dd>
                                     <dt>Heure</dt>
@@ -25,7 +42,7 @@
                                     <dd>{{$soin->soin->duree}}</dd>
                                     <dt>personnel</dt>
                                     <dd>{{$soin->user->name}}</dd>
-                                </dl>
+                                </dl>--}}
                             </div>
                         </div>
                     </div>
@@ -37,7 +54,7 @@
                                     <dt>Status</dt>
                                     <dd>{{$soin->status}}</dd>
                                     <dt>Prix</dt>
-                                    <dd>{{$soin->soin->price}}  <span class="mdi mdi-currency-eur"></span></dd>
+                                    <dd>{{$soin->total}}  <span class="mdi mdi-currency-eur"></span></dd>
                                     <dt>Mode paiement</dt>
                                     <dd>{{$soin->paiement}}</dd>
                                 </dl>

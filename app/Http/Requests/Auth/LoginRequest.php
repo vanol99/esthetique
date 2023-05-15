@@ -53,11 +53,11 @@ class LoginRequest extends FormRequest
             ]);
 
         }
-      /*  if (!Auth::user()->activate){
+      if (!Auth::user()->activate){
             throw ValidationException::withMessages([
-                'activate' => 'Nous sommes desolé! votre compte est encours d\' activation',
+                'activate' => 'Nous sommes desolé! votre compte est desactivé veuillez contacter l\'administrateur.'
             ]);
-        }*/
+        }
 
         RateLimiter::clear($this->throttleKey());
     }

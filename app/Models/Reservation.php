@@ -15,13 +15,13 @@ class Reservation extends Model
         'date_reservation',
         'heure_reservation',
         'status',
-        'soin_id',
+        'total',
         'customer_id',
         'user_id',
     ];
-    public function soin() {
+/*    public function soin() {
         return $this->belongsTo(Soin::class, 'soin_id', 'id');
-    }
+    }*/
     public function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }

@@ -44,12 +44,80 @@ $('#delete_btn').click(function () {
     });
 })
     $('#delete_btn_user').click(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
         $.ajax({
             url: configs.routes.ajaxdeleteuser,
-            type: "GET",
+            type: "DELETE",
             dataType: "JSON",
             data: {
-                'item':$('#periode_id').text()
+                'item':$('#item_id').text()
+            },
+            success: function (data) {
+                window.location.reload(true);
+            },
+            error: function (err) {
+                alert("An error ocurred while loading data ...");
+            }
+        });
+    })
+    $('#delete_btn_caisse').click(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+        $.ajax({
+            url: configs.routes.ajaxdeletecaisse,
+            type: "DELETE",
+            dataType: "JSON",
+            data: {
+                'item':$('#item_id').text()
+            },
+            success: function (data) {
+                window.location.reload(true);
+            },
+            error: function (err) {
+                alert("An error ocurred while loading data ...");
+            }
+        });
+    })
+    $('#delete_btn_soin').click(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+        $.ajax({
+            url: configs.routes.ajaxdeletesoin,
+            type: "DELETE",
+            dataType: "JSON",
+            data: {
+                'item':$('#item_id').text()
+            },
+            success: function (data) {
+                window.location.reload(true);
+            },
+            error: function (err) {
+                alert("An error ocurred while loading data ...");
+            }
+        });
+    })
+    $('#delete_btn_typesoin').click(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+        $.ajax({
+            url: configs.routes.ajaxdeletetypesoin,
+            type: "DELETE",
+            dataType: "JSON",
+            data: {
+                'item':$('#item_id').text()
             },
             success: function (data) {
                 window.location.reload(true);
@@ -65,7 +133,70 @@ $('#delete_btn').click(function () {
             type: "GET",
             dataType: "JSON",
             data: {
-                'item':$('#periode_id').text()
+                'item': $('#item_id').text()
+            },
+            success: function (data) {
+                window.location.reload(true);
+            },
+            error: function (err) {
+                alert("An error ocurred while loading data ...");
+            }
+        });
+    })
+    $('#delete_btn_product').click(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+        $.ajax({
+            url: configs.routes.ajaxdeleteproduct,
+            type: "DELETE",
+            dataType: "JSON",
+            data: {
+                'item': $('#item_id').text()
+            },
+            success: function (data) {
+                window.location.reload(true);
+            },
+            error: function (err) {
+                alert("An error ocurred while loading data ...");
+            }
+        });
+    })
+    $('#delete_btn_customer').click(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+        $.ajax({
+            url: configs.routes.ajaxdeletecustomer,
+            type: "DELETE",
+            dataType: "JSON",
+            data: {
+                'item': $('#item_id').text()
+            },
+            success: function (data) {
+                window.location.reload(true);
+            },
+            error: function (err) {
+                alert("An error ocurred while loading data ...");
+            }
+        });
+    })
+    $('#delete_btn_fournisseur').click(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+        $.ajax({
+            url: configs.routes.ajaxdeletefournisseur,
+            type: "DELETE",
+            dataType: "JSON",
+            data: {
+                'item': $('#item_id').text()
             },
             success: function (data) {
                 window.location.reload(true);

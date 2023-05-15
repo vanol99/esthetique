@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="content-page">
+        <span id="item_id" hidden></span>
         <div class="content">
         @include("back._partials.errors-and-messages")
         <!-- Start Content-->
@@ -49,7 +50,7 @@
                                                        href="{{route('typesoin.edit',[$agent['id']])}}">
                                                         <i class="mdi mdi-pencil pl-1" aria-hidden="true"></i>
                                                     </a>
-                                                    <a class="btn-sm btn-danger p-1 pr-2 m-1"
+                                                    <a class="btn-sm btn-danger p-1 pr-2 m-1" onclick="getItem({{$agent['id']}})"
                                                        data-bs-toggle="modal" data-bs-target="#bs-delete-modal-sm">
                                                         <i class="mdi mdi-trash-can pl-1" aria-hidden="true"></i>
                                                     </a>
@@ -122,7 +123,7 @@
                         {{csrf_field()}}
 
                         <div class="mb-3 d-grid text-center">
-                            <button class="btn btn-danger" type="button" id="delete_btn"> Supprimer </button>
+                            <button class="btn btn-danger" type="button" id="delete_btn_typesoin"> Supprimer </button>
                         </div>
                     </form>
                 </div>

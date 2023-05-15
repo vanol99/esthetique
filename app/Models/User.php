@@ -59,15 +59,15 @@ class User extends Authenticatable
 
     public function scopeEstheticien($query)
     {
-        return $query->where('user_type', '=', 1);
+        return $query->where('user_type', '=', 1)->where(['activate'=>true]);
     }
     public function scopeCustomer($query)
     {
-        return $query->where('user_type', '=', 2);
+        return $query->where('user_type', '=', 2)->where(['activate'=>true]);
     }
     public function scopeCaisse($query)
     {
-        return $query->where('user_type', '=', 3);
+        return $query->where('user_type', '=', 3)->where(['activate'=>true]);
     }
 
 

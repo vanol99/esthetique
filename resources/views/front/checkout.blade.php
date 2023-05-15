@@ -16,13 +16,32 @@
     <!-- Breadcrumb End -->
     @include("back._partials.errors-and-messages")
     <div class="container-fluid">
-        @if(isset($soin))
+        @if(Session::get('soins'))
         <div class="row px-xl-5">
             <div class="col-md-8">
                 <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">
                         Detail commande</span></h5>
                 <div class="bg-light p-30 mb-5">
-                    <dl class="row-md jh-entity-details">
+                    <table class="table table-light table-borderless table-hover text-center mb-0">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Prestations</th>
+                            <th>Prix</th>
+                            <th>Durée</th>
+                        </tr>
+                        </thead>
+                        <tbody class="align-middle">
+
+                        @foreach($soins as $product)
+                            <tr>
+                                <td class="align-middle"> {{$product->libelle}}</td>
+                                <td class="align-middle"><i class="fa fa-euro"></i>{{$product->price}}</td>
+                                <td class="align-middle">{{$product->duree}}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                   {{-- <dl class="row-md jh-entity-details">
                         <dt>Soin</dt>
                         <dd>{{$soin->libelle}}</dd>
                         <dt>Duree</dt>
@@ -30,7 +49,7 @@
                         <dt>Description</dt>
                         <dd>
                             {{$soin->description}}</dd>
-                    </dl>
+                    </dl>--}}
                 </div>
             </div>
             <div class="col-md-4">
@@ -43,9 +62,9 @@
                         <dt>Heure de debut</dt>
                         <dd>{{session('start')}}</dd>
                         <dt>Montant</dt>
-                        <dd>{{$soin->price}} <i class="fa fa-euro"></i></dd>
+                        <dd>{{$total}} <i class="fa fa-euro"></i></dd>
                         <dt>Montant total</dt>
-                        <dd>{{$soin->price}} <i class="fa fa-euro"></i></dd>
+                        <dd>{{$total}} <i class="fa fa-euro"></i></dd>
                     </dl>
                     <hr>
                 </div>

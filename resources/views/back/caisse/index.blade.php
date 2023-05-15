@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="content-page">
+        <span id="item_id" hidden></span>
         <div class="content">
         @include("back._partials.errors-and-messages")
         <!-- Start Content-->
@@ -72,7 +73,7 @@
                                                        href="{{route('caisse.edit',[$agent['id']])}}">
                                                         <i class="mdi mdi-pencil pl-1" aria-hidden="true"></i>
                                                     </a>
-                                                    <a class="btn-sm btn-danger p-1 pr-2 m-1"
+                                                    <a onclick="getItem({{$agent['id']}})" class="btn-sm btn-danger p-1 pr-2 m-1"
                                                        data-bs-toggle="modal" data-bs-target="#bs-delete-modal-sm">
                                                         <i class="mdi mdi-trash-can pl-1" aria-hidden="true"></i>
                                                     </a>
@@ -154,7 +155,7 @@
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="mySmallModalLabel">Supprimer le personnel</h4>
+                    <h4 class="modal-title" id="mySmallModalLabel">Supprimer la caisse</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -163,7 +164,7 @@
                         {{csrf_field()}}
 
                         <div class="mb-3 d-grid text-center">
-                            <button class="btn btn-danger" type="button" id="delete_btn_user"> Supprimer </button>
+                            <button class="btn btn-danger" type="button" id="delete_btn_caisse"> Supprimer </button>
                         </div>
                     </form>
                 </div>

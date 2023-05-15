@@ -1,4 +1,10 @@
-
+.logo-box {
+    height: 70px;
+    width: 240px;
+    background-color: #fff !important;
+    float: left;
+    transition: all .1s ease-out;
+}
 .pagination {
     display: -ms-flexbox;
     display: flex;

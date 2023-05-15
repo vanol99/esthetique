@@ -108,8 +108,11 @@ class FournisseurController extends Controller
         public function destroy(Request $request)
     {
         $id=$request->get('item');
-        $conge = Fournisseur::query()->find($id);
-        $conge->delete();
-        return response()->json(['data' => $conge, 'status' => true]);
+       $fournisseur = Fournisseur::query()->find($id);
+        $fournisseur->delete();
+       /* $bool=  $fournisseur->update([
+            'activate'=>false
+        ]);*/
+        return response()->json(['data' => $fournisseur, 'status' => true]);
     }
 }

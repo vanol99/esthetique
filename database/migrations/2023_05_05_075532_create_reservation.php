@@ -17,8 +17,8 @@ return new class extends Migration
             $table->date('date_reservation');
             $table->time('heure_reservation');
             $table->string('status');
+            $table->double('total')->default(0.0);
             $table->foreignId('user_id')->nullable(true)->constrained();
-            $table->foreignId('soin_id');
             $table->foreignId('customer_id');
         });
     }

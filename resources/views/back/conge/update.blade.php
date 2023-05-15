@@ -42,7 +42,8 @@
                                         <input value="{{$soin->heure_fin}}" class="form-control" name="heure_fin" type="time" id="name" required="" placeholder="Enter your name">
                                     </div>
                                 </div>
-                                <div class="mb-3 d-grid text-center">
+                                <div class="mb-3 text-center">
+                                    <a class="btn btn-warning" type="button" href="{{route('conge.index')}}"><i class="mdi mdi-arrow-left"></i> annuler </a>
                                     <button class="btn btn-success" type="submit"> Update </button>
                                 </div>
                             </form>

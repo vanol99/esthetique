@@ -127,8 +127,12 @@ class EstheticienController extends Controller
     public function destroy(Request $request)
     {
         $id=$request->get('item');
-        $conge = User::query()->find($id);
-        $conge->delete();
-        return response()->json(['data' => $conge, 'status' => true]);
+        $customer = User::query()->find($id);
+        $bool=  $customer->update([
+            'activate'=>false
+        ]);
+/*        $conge = User::query()->find($id);
+        $conge->delete();*/
+        return response()->json(['data' => $bool, 'status' => true]);
     }
 }

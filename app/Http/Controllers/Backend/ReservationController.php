@@ -7,6 +7,7 @@ use App\Helpers\helpers;
 use App\Http\Controllers\Controller;
 use App\Models\Conge;
 use App\Models\Planing;
+use App\Models\Prestation;
 use App\Models\Reservation;
 use App\Models\Soin;
 use App\Models\User;
@@ -108,7 +109,8 @@ class ReservationController extends Controller
     public function show($id)
     {
         $soin=Reservation::find($id);
-        return view('back.reservation.update', compact('soin'));
+        $prestations=Prestation::query()->where(['reservation_id'=>$id])->get();
+        return view('back.reservation.update', compact('soin','prestations'));
     }
 
     /**

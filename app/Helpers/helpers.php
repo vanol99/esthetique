@@ -280,7 +280,7 @@ class helpers
         $message_send = $data['message'];
         $user=$data['user'];
         $data_ = array('name' => $user->name.' '.$user->lastname,'reservation'=>$data['reservation'],
-            'content' => $message_send,);
+            'content' => $message_send,'prestations'=>$data['prestations']);
         Mail::send(['text' => 'mail.reservation_active'], $data_, function ($message)
         use ($user, $subject, $message_send) {
             $message->to($user->email, $user->name)->subject($subject);

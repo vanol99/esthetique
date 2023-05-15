@@ -35,10 +35,14 @@ Route::get('/startreservation', [FrontController::class, 'startreservation'])
     ->name('startreservation');
 Route::get('/cart', [FrontController::class, 'cart'])
     ->name('cart');
+Route::get('/cartfinal', [FrontController::class, 'cartfinal'])
+    ->name('cartfinal');
 Route::get('/detailsoin', [FrontController::class, 'detailsoin'])
     ->name('detailsoin');
 Route::get('/checkoutsession', [FrontController::class, 'checkoutsession'])
     ->name('checkoutsession');
+Route::get('/removesession', [FrontController::class, 'removesession'])
+    ->name('removesession');
 Route::get('/calculplaning', [FrontController::class, 'calculplaning'])
     ->name('calculplaning');
 Route::get('/contact', [FrontController::class, 'contact'])

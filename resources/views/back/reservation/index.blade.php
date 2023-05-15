@@ -30,7 +30,6 @@
 
                                             <th>Date de reservation</th>
                                             <th>heure de reservation</th>
-                                            <th>Soin</th>
                                             <th>Prix</th>
                                             <th>Specialiste</th>
                                             <th>Status</th>
@@ -53,10 +52,7 @@
                                                     {{$agent['heure_reservation']}}
                                                 </td>
                                                 <td>
-                                                    {{$agent['soin']->libelle}}
-                                                </td>
-                                                <td>
-                                                    {{$agent['soin']->price}} <span class="mdi mdi-currency-eur"></span>
+                                                    {{$agent['total']}} <span class="mdi mdi-currency-eur"></span>
                                                 </td>
                                                 <td>
                                                     @if($agent['user'])

@@ -65,7 +65,8 @@
                                             <input class="form-control"  name="name" type="text" id="duree" disabled placeholder="">
                                         </div>
                                     </div>
-                                    <div class=" p-3 mb-3 d-grid text-center">
+                                    <div class=" p-3 mb-3 text-center">
+                                        <a class="btn btn-warning" type="button" href="{{route('facture.index')}}"><i class="mdi mdi-arrow-left"></i> annuler </a>
                                         <button class="btn btn-success" type="submit"> Modifier </button>
                                     </div>
                             </form>

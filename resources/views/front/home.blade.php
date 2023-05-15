@@ -14,7 +14,7 @@
                             <li data-target="#header-carousel" data-slide-to="2"></li>
                         </ol>
                         <div class="carousel-inner">
-                            @if($soins[0])
+                            @if(sizeof($soins)>0)
                                 <div class="carousel-item position-relative active" style="height: 430px;">
                                     <img class="position-absolute w-100 h-100" src="{{ asset('multi/img/p738348.jpg') }}" style="object-fit: cover;">
                                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">

@@ -44,6 +44,9 @@
             <div class="bg-light p-30 mb-5">
             <div class="tab-content pt-0">
                 <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="text-center mt-3">
+                        <img src="{{ asset('logo.jpeg') }}">
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                     <div class="row">

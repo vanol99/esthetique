@@ -79,8 +79,13 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(Request $request)
     {
-        //
+        $id=$request->get('item');
+        $customer = User::query()->find($id);
+        $bool=  $customer->update([
+           'activate'=>false
+        ]);
+        return response()->json(['data' => $bool, 'status' => $bool]);
     }
 }

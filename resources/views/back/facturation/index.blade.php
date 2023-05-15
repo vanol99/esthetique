@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="content-page">
+        <span id="item_id" hidden></span>
         <div class="content">
         @include("back._partials.errors-and-messages")
         <!-- Start Content-->

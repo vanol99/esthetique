@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="content-page">
+        <span id="item_id" hidden></span>
         <div class="content">
         @include("back._partials.errors-and-messages")
         <!-- Start Content-->
@@ -59,28 +60,16 @@
                                                 <td>
                                                     {{$agent['adresse']}}
                                                 </td>
-                                                {{--    <td>
-                                                        <label class="toggle-switch d-flex align-items-center mb-3" for="welcome_status_{{$agent['id']}}">
-                                                            <input type="checkbox" name="welcome_status"
-                                                                   class="toggle-switch-input"
-                                                                   id="welcome_status_{{$agent['id']}}" {{$agent?($agent['is_active']==1?'checked':''):''}}
-                                                                   onclick="location.href='{{route('admin.agent.status',[$agent['id']])}}'">
-
-                                                            <span class="toggle-switch-label p-1">
-                                                    <span class="toggle-switch-indicator"></span>
-                                                </span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <a class="btn-sm btn-primary p-1 m-1"
-                                                           href="{{route('admin.agent.view',[$agent['id']])}}">
-                                                            <i class="fa fa-eye pl-1" aria-hidden="true"></i>
-                                                        </a>
-                                                        <a class="btn-sm btn-secondary p-1 pr-2 m-1"
-                                                           href="{{route('admin.agent.edit',[$agent['id']])}}">
-                                                            <i class="fa fa-pencil pl-1" aria-hidden="true"></i>
-                                                        </a>
-                                                    </td>--}}
+                                                <td>
+                                                   {{-- <a class="btn-sm btn-secondary p-1 pr-2 m-1"
+                                                       href="{{route('conge.edit',[$agent['id']])}}">
+                                                        <i class="mdi mdi-pencil pl-1" aria-hidden="true"></i>
+                                                    </a>--}}
+                                                    <a onclick="getItem({{$agent['id']}})" class="btn-sm btn-danger p-1 pr-2 m-1"
+                                                       data-bs-toggle="modal" data-bs-target="#bs-delete-modal-sm">
+                                                        <i class="mdi mdi-trash-can pl-1" aria-hidden="true"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -110,6 +99,26 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="bs-delete-modal-sm" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="mySmallModalLabel">Supprimer le client</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Cette action est irreverssible</p>
+                    <form>
+                        {{csrf_field()}}
+
+                        <div class="mb-3 d-grid text-center">
+                            <button class="btn btn-danger" type="button" id="delete_btn_customer"> Supprimer </button>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 @endsection
 

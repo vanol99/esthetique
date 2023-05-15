@@ -9,7 +9,13 @@ class Prestation extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'date_conge',
-        'periode_id',
+        'reservation_id',
+        'soin_id',
     ];
+    public function reservation() {
+        return $this->belongsTo(Reservation::class, 'reservation_id', 'id');
+    }
+    public function soin() {
+        return $this->belongsTo(Soin::class, 'soin_id', 'id');
+    }
 }

@@ -41,6 +41,8 @@
             ajaxdeletecategorie: "{{\Illuminate\Support\Facades\URL::route('product_type.destroy')}}",
             ajaxdeletetypesoin: "{{\Illuminate\Support\Facades\URL::route('typesoin.destroy')}}",
             ajaxdeletesoin: "{{\Illuminate\Support\Facades\URL::route('soin.destroy')}}",
+            ajaxdeletecaisse: "{{\Illuminate\Support\Facades\URL::route('caisse.destroy')}}",
+            ajaxdeletefournisseur: "{{\Illuminate\Support\Facades\URL::route('fournisseur.destroy')}}",
             ajaxdeletefacturation: "{{\Illuminate\Support\Facades\URL::route('facturation.destroy')}}",
             ajaxaddplaning: "{{\Illuminate\Support\Facades\URL::route('planing_add')}}",
             ajaxremoveplaning: "{{\Illuminate\Support\Facades\URL::route('planing_remove')}}",

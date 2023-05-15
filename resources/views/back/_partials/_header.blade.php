@@ -27,7 +27,7 @@
                 </div>
             </li>
 
-            <li class="dropdown notification-list topbar-dropdown">
+            {{--<li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-bell noti-icon"></i>
                     <span class="badge bg-danger rounded-circle noti-icon-badge">9</span>
@@ -52,7 +52,7 @@
                     </a>
 
                 </div>
-            </li>
+            </li>--}}
 
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -94,12 +94,12 @@
 
         <!-- LOGO -->
         <div class="logo-box">
-            <a href="/" class="logo logo-light text-center">
+            <a href="{{route('dashboard')}}" class="logo logo-light text-center">
                 <span class="logo-sm">
-                    <img src="{{asset('storage/images/logo.png')}}" alt="" height="22">
+                    <img src="{{asset('logo.jpeg')}}" alt="" height="22">
                 </span>
                 <span class="logo-lg text-white">
-                    <img src="{{asset('storage/images/logo_dark.png')}}" alt="" height="100">
+                    <img src="{{asset('logo.jpeg')}}" alt="" height="98">
                 </span>
             </a>
             <a href="/" class="logo logo-dark text-center">
