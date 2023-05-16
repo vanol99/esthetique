@@ -22,7 +22,7 @@ class VerifyRole
             return redirect(RouteServiceProvider::HOME);
         }
         return $next($request);*/
-        if (Auth::user() && (Auth::user()->user_type === User::ADMIN_TYPE || Auth::user()->user_type === User::AGENT_TYPE)) {
+        if (Auth::user() && (Auth::user()->user_type === User::ADMIN_TYPE || Auth::user()->user_type === User::AGENT_TYPE|| Auth::user()->user_type === User::CAISSE_TYPE)) {
             return $next($request);
         }
         return redirect()->route('home');
