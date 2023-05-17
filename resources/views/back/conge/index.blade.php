@@ -123,11 +123,11 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="name" class="form-label">Date Debut</label>
-                                <input class="form-control" name="date_debut" type="date" id="name" required="" placeholder="Enter your name">
+                                <input class="form-control" min="{{date('Y-m-d')}}" name="date_debut" type="date" id="name" required="" placeholder="Enter your name">
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="name" class="form-label">Date Fin</label>
-                                <input class="form-control" name="date_fin" type="date" id="name" required="" placeholder="Enter your name">
+                                <input class="form-control" min="{{date('Y-m-d')}}" name="date_fin" type="date" id="name" required="" placeholder="Enter your name">
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="name" class="form-label">Heure de debut</label>

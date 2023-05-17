@@ -53,13 +53,13 @@ class EstheticienController extends Controller
             'f_name' => 'required',
             'l_name' => 'required',
             //'image' => 'required',
-            'email' => 'required|unique:users|min:4|max:20',
-            'phone' => 'required|unique:users|min:8|max:20',
+            'email' => 'required|unique:users|min:4|max:100',
+            'phone' => 'required|unique:users|min:8|max:100',
             'adresse' => 'required',
             'password' => 'required|min:4|max:14',
         ],[
             'password.min' => 'Password must contain 4 characters',
-            'password.max' => 'Password must contain 4 characters',
+            'password.max' => 'Password must contain 14 characters',
         ]);
 
         $email = $request->email;

@@ -18,4 +18,7 @@ class Soin extends Model
     public function type() {
         return $this->belongsTo(Soin_type::class, 'soin_type_id', 'id');
     }
+    public function products() {
+        return $this->belongsToMany(Product::class,'soin_products');
+    }
 }

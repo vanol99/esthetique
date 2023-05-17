@@ -33,7 +33,7 @@ class CongeController extends Controller
             $agents = new Conge();
         }
 
-        $agents = $agents->newQuery()->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
+        $agents = $agents->newQuery()->orderBy('date_debut','DESC')->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
         $users = User::where("id", '>', 0)->estheticien()->get();
         return view('back.conge.index', compact('agents', 'search', 'users'));
     }

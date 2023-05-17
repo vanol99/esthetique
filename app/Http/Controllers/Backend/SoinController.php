@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Helpers\helpers;
 use App\Http\Controllers\Controller;
+use App\Models\Fournisseur;
 use App\Models\Product;
+use App\Models\Product_type;
 use App\Models\Soin;
 use App\Models\Soin_type;
 use App\Models\User;
@@ -108,7 +110,24 @@ class SoinController extends Controller
         ]);
         return redirect()->route('soin.index');
     }
-
+    public function product(Request $request,$id)
+    {
+        $soin= Soin::query()->find($id);
+        $produts=Product::all();
+        if ($request->method()=="POST"){
+            $product=Product::query()->find($request->product_id);
+            $soin->products()->attach($request->product_id);
+        }
+        return view('back.soin.product', [
+            'soin'=>$soin,
+            'products'=>$produts
+        ]);
+    }
+    public function removeproduct(Request $request){
+        $soin= Soin::query()->find($request->get('soin_id'));
+        $soin->products()->detach($request->product_id);
+        return redirect()->route('soin.product',['id'=>$soin->id]);
+    }
     /**
      * Remove the specified resource from storage.
      */

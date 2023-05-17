@@ -233,6 +233,10 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
             ->name('edit');
         Route::post('/update/{id}', [SoinController::class, 'update'])
             ->name('update');
+        Route::match(array('GET', 'POST'),'/product/{id}', [SoinController::class, 'product'])
+            ->name('product');
+        Route::get('/removeproduct', [SoinController::class, 'removeproduct'])
+            ->name('removeproduct');
         Route::post('/store', [SoinController::class, 'store'])
             ->name('store');
         Route::delete('/destroy', [SoinController::class, 'destroy'])

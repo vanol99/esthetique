@@ -58,14 +58,20 @@
                                                     {{$agent['type']->libelle}}
                                                 </td>
                                                 <td>
-                                                    <a class="btn-sm btn-secondary p-1 pr-2 m-1"
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-sm btn-success"
+                                                           href="{{route('soin.product',[$agent['id']])}}">
+                                                            Produits
+                                                        </a>
+                                                    <a class="btn btn-sm btn-secondary"
                                                        href="{{route('soin.edit',[$agent['id']])}}">
                                                         <i class="mdi mdi-pencil pl-1" aria-hidden="true"></i>
                                                     </a>
-                                                    <a class="btn-sm btn-danger p-1 pr-2 m-1"  onclick="getItem({{$agent['id']}})"
+                                                    <a class="btn btn-sm btn-danger"  onclick="getItem({{$agent['id']}})"
                                                        data-bs-toggle="modal" data-bs-target="#bs-delete-modal-sm">
                                                         <i class="mdi mdi-trash-can pl-1" aria-hidden="true"></i>
                                                     </a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
