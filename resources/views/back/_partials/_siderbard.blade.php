@@ -63,6 +63,12 @@
                             <span> Facturation </span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{route('caisse.paiement')}}">
+                            <i class="mdi mdi-account-cash"></i>
+                            <span> Paiement en attente </span>
+                        </a>
+                    </li>
                 @endif
                 @if(auth()->user()->user_type==0)
                 <li class="menu-title mt-2">Apps</li>

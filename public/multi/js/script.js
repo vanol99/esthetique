@@ -64,14 +64,14 @@ $(function () {
         });
         //window.location=configs.routes.index+"?date_start="+datet;
     }
-
+    var current_Date=new Date();
     var defaultConfig = {
         weekDayLength: 1,
         date: datet,
         onClickDate: selectDate,
         showYearDropdown: true,
         startOnMonday: true,
-        min:new Date('-1 day')
+        min:new Date(current_Date+1)
     };
 
     var calendar = $('#calendar-wrapper').calendar(defaultConfig);

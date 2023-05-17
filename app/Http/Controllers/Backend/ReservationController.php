@@ -119,18 +119,19 @@ class ReservationController extends Controller
     public function edit(Request $request,$id)
     {
         $reservation=Reservation::find($id);
+        $arrays=Prestation::query()->where(['reservation_id'=>$id]);
         if ($request->get('status')=="valide"){
             $reservation->update([
                'status'=>Reservation::ACCEPTED
             ]);
-            $data=['reservation'=>$reservation,"subject"=>"Reservation validée",'message'=>'','user'=>$reservation->user];
-            helpers::send_reservation_active($data);
+            $data = ['reservation' => $reservation,'prestations'=>$arrays, "subject" => "Reservation acceptée", 'message' => '', 'customer' => $reservation->customer];
+            helpers::send_reservation_init($data);
         }else{
             $reservation->update([
                 'status'=>Reservation::DENIED
             ]);
-            $data=['reservation'=>$reservation,"subject"=>"Reservation echouée",'message'=>'','user'=>$reservation->user];
-            helpers::send_reservation_active($data);
+            $data = ['reservation' => $reservation,'prestations'=>$arrays, "subject" => "Reservation echoueé", 'message' => '', 'customer' => $reservation->customer];
+            helpers::send_reservation_init($data);
         }
         return redirect()->route('reservation');
     }

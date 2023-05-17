@@ -1,12 +1,21 @@
 Hi, {{ $name }}
-Votre commande du {{$reservation->date_reservation}}
-@foreach($prestations as $prestation)
+<br>
+Votre reservation du {{$reservation->date_reservation}}
+<p>Montant ht: {{$reservation->totalht}}</p>
+<p>Montant tva: {{$reservation->totaltva}}</p>
+<p>Montant ttc: {{$reservation->total}}</p>
+<p>Mode de paiement: {{$reservation->getPayement($reservation->type_paiement)}}</p>
+<br>
+<h5>Detail de la reservation</h5>
     <table class="table table-bordered mt-2">
         <thead>
-        <th>#</th>
-        <th>Soin</th>
-        <th>Prix</th>
-        <th>Duree</th>
+        <tr>
+            <th>#</th>
+            <th>Soin</th>
+            <th>Prix</th>
+            <th>Duree</th>
+        </tr>
+
         </thead>
         <tbody>
         @foreach($prestations as $prestation)
@@ -19,7 +28,5 @@ Votre commande du {{$reservation->date_reservation}}
         @endforeach
         </tbody>
     </table>
-@endforeach
 
 
-{{$content}}

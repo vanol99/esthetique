@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Helpers\helpers;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Soin;
 use App\Models\Soin_type;
 use App\Models\User;
@@ -96,9 +97,16 @@ class SoinController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Soin $soin)
+    public function update(Request $request, $id)
     {
-        //
+        $conge = Soin::find($id);
+        $conge->update([
+            'libelle' => $request->libelle,
+            'price' => $request->price,
+            'duree' => $request->duree,
+            'soin_type_id' => $request->soin_type_id,
+        ]);
+        return redirect()->route('soin.index');
     }
 
     /**

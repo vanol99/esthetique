@@ -9,6 +9,7 @@ use App\Helpers\helpers;
 use App\Http\Controllers\Controller;
 use App\Models\Planing;
 use App\Models\Prestation;
+use App\Models\Product;
 use App\Models\Reservation;
 use App\Models\Soin;
 use App\Models\Soin_type;
@@ -57,7 +58,13 @@ class FrontController extends Controller
 
         ]);
     }
-
+    public function product(Request $request)
+    {
+        $products=Product::all();
+        return view('front.product', [
+            'products'=>$products
+        ]);
+    }
     public function checkout(Request $request)
     {
         $customer = Auth::user();
@@ -81,7 +88,7 @@ class FrontController extends Controller
             $reservation = new Reservation();
             $reservation->date_reservation = session('date');
             $reservation->heure_reservation = session('start');
-            //$reservation->soin_id = session('soin_id');
+            $reservation->type_paiement = Reservation::setPayement($request->get('payement_method'));
             $reservation->customer_id = $customer->id;
             $reservation->status = Reservation::PENDING;
             $reservation->user_id = session('user_id');
@@ -101,11 +108,14 @@ class FrontController extends Controller
                 $arrays[]=$prestation;
             }
             $reservation->update([
-               'total'=>$total
+               'totaltva'=>$total*0.21,
+                'totalht'=>$total,
+                'total'=>$total+($total*0.21)
             ]);
-            $data = ['reservation' => $reservation,'prestations'=>$arrays, "subject" => "Reservation echouée", 'message' => '', 'user' => $reservation->user];
+            $data = ['reservation' => $reservation,'prestations'=>$arrays, "subject" => "Nouvelle reservation", 'message' => '', 'customer' => $reservation->customer];
             helpers::send_reservation_active($data);
             Session::remove("soin_id");
+            Session::remove("soins");
             Session::remove("start");
             Session::remove("date");
             Session::remove("user_id");
@@ -171,7 +181,9 @@ class FrontController extends Controller
 
        // dump($soins);
         return view('front.cart', [
-            'total' => $total,
+            'totalht' => $total,
+            'totaltva' => $total*0.21,
+            'total' => $total+($total*0.21),
             'soins' => $arrays,
         ]);
     }
@@ -236,7 +248,15 @@ class FrontController extends Controller
         $soin_id = $request->get('item');
         $date_ = $request->get('date');
         $soin = Soin::find($soin_id);
-        $durre = DateTimeHelper::getMin($soin->duree);
+        $soins = Session::get("soins");
+        $durre =0;
+        foreach (array_unique($soins) as $item){
+            $soin = Soin::query()->find($item);
+            if (isset($soin)) {
+                $durre += DateTimeHelper::getMin($soin->duree);
+            }
+        }
+
         $arry = [];
         if ($user_id == 0) {
             $s = strtotime($date_ . " 08:00:00");

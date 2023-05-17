@@ -6,6 +6,7 @@ use App\Helpers\helpers;
 use App\Http\Controllers\Controller;
 use App\Models\Caisse;
 use App\Models\Conge;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -37,7 +38,28 @@ class CaisseController extends Controller
         $agents = $agents->caisse()->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
         return view('back.caisse.index', compact('agents', 'search'));
     }
+    public function paiement(Request $request){
+        $query_param = [];
+        $search = $request['search'];
+        if ($request->has('search')) {
+            $key = explode(' ', $request['search']);
+            $agents = Reservation::where(function ($q) use ($key) {
+                foreach ($key as $value) {
+                    $q->orWhere('date_reservation', 'like', "%{$value}%")
+                        ->orWhere('heure_reservation', 'like', "%{$value}%")
+                        // ->orWhere('phone', 'like', "%{$value}%")
+                        // ->orWhere('email', 'like', "%{$value}%")
+                    ;
+                }
+            });
+            $query_param = ['search' => $request['search']];
+        } else {
+            $agents = new Reservation();
+        }
 
+        $agents = $agents->Caisse()->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
+        return view('back.caisse.paiement', compact('agents', 'search'));
+    }
     /**
      * Show the form for creating a new resource.
      */

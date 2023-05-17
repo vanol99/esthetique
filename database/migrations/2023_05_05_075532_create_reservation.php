@@ -16,8 +16,11 @@ return new class extends Migration
             $table->timestamps();
             $table->date('date_reservation');
             $table->time('heure_reservation');
+            $table->integer('type_paiement');
             $table->string('status');
+            $table->double('totalht')->default(0.0);
             $table->double('total')->default(0.0);
+            $table->double('totaltva')->default(0.0);
             $table->foreignId('user_id')->nullable(true)->constrained();
             $table->foreignId('customer_id');
         });

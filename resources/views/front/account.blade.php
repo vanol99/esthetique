@@ -178,7 +178,6 @@
                                 <th style="width: 25%">Specialist(e)</th>
                                 <th>Date</th>
                                 <th>heure</th>
-                                <th>Soin</th>
                                 <th>Prix</th>
                                 <th>Status</th>
                             </tr>
@@ -200,11 +199,9 @@
                                     </td>
 
                                     <td>
-                                        {{$agent['soin']->libelle}}
+                                        {{$agent['total']}}
                                     </td>
-                                    <td>
-                                       <p> {{$agent['soin']->price}} <span class="fa fa-euro"></span></p>
-                                    </td>
+
                                     <td>
                                         {{$agent['status']}}
                                     </td>

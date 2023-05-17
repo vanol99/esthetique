@@ -81,7 +81,7 @@
                 <div class="bg-light p-1 mb-5">
                     <ul class="list-group-flush">
                         @foreach($soins as $soin)
-                            <li class="list-group-item">{{$soin->libelle}}</li>
+                            <li class="list-group-item">{{$soin->libelle}} -- <span class="text-sm-left">{{$soin->duree}}</span> </li>
                         @endforeach
                     </ul>
                {{--     <dl class="row-md jh-entity-details">

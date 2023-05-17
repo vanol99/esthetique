@@ -37,6 +37,8 @@ Route::get('/cart', [FrontController::class, 'cart'])
     ->name('cart');
 Route::get('/cartfinal', [FrontController::class, 'cartfinal'])
     ->name('cartfinal');
+Route::get('/products', [FrontController::class, 'product'])
+    ->name('product');
 Route::get('/detailsoin', [FrontController::class, 'detailsoin'])
     ->name('detailsoin');
 Route::get('/checkoutsession', [FrontController::class, 'checkoutsession'])
@@ -214,6 +216,8 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
             ->name('update');
         Route::get('/list', [CaisseController::class, 'index'])
             ->name('index');
+        Route::get('/paiement', [CaisseController::class, 'paiement'])
+            ->name('paiement');
         Route::post('/store', [CaisseController::class, 'store'])
             ->name('store');
         Route::delete('/destroy', [CaisseController::class, 'destroy'])

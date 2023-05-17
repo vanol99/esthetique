@@ -15,7 +15,10 @@ class Reservation extends Model
         'date_reservation',
         'heure_reservation',
         'status',
+        'type_paiement',
         'total',
+        'totalht',
+        'totaltva',
         'customer_id',
         'user_id',
     ];
@@ -27,5 +30,39 @@ class Reservation extends Model
     }
     public function customer() {
         return $this->belongsTo(User::class, 'customer_id', 'id');
+    }
+    public function scopeCaisse($query)
+    {//caisse
+        return $query->where('type_paiement', '=', 1)->where(['status'=>self::PENDING]);
+    }
+    public static function setPayement($payment){
+        $val=2;
+        switch ($payment){
+            case "paypal":
+                $val= 1;
+                break;
+            case "caisse":
+                $val=  2;
+                break;
+            case "bank_transfert":
+                $val=  3;
+                break;
+        }
+        return $val;
+    }
+    public function getPayement($payment_type){
+        $val="Caisse";
+        switch ($payment_type){
+            case 1:
+                $val= "Paypal";
+                break;
+            case 2:
+                $val=  "Caisse";
+                break;
+            case 3:
+                $val=  "Carte bancaire";
+                break;
+        }
+        return $val;
     }
 }

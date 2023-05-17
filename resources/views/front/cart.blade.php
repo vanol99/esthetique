@@ -42,7 +42,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                <a href="{{route('startreservation')}}" class="h6 mt-2 pull-right">Ajouter une prestation</a>
+                <a href="{{route('startreservation')}}" class="h6 mt-2 pull-right">Ajouter un soin</a>
             </div>
             <div class="col-lg-4">
                 {{--  <form class="mb-30" action="">
@@ -58,7 +58,11 @@
                     <div class="border-bottom pb-2">
                         <div class="d-flex justify-content-between mb-3">
                             <h6>Sub-Total</h6>
-                            <h6>{{$total}}<i class="fa fa-euro"></i></h6>
+                            <h6>{{$totalht}}<i class="fa fa-euro"></i></h6>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6 class="font-weight-medium">Tva</h6>
+                            <h6 class="font-weight-medium">{{$totaltva}}<i class="fa fa-euro"></i></h6>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Reduction</h6>
@@ -68,7 +72,7 @@
                     <div class="pt-2">
                         <div class="d-flex justify-content-between mt-2">
                             <h5>Total</h5>
-                            <h5>160<i class="fa fa-euro"></i></h5>
+                            <h5>{{$total}}<i class="fa fa-euro"></i></h5>
                         </div>
                         <a href="{{route('cartfinal')}}" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Continue</a>
                     </div>

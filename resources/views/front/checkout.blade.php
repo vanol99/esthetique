@@ -75,15 +75,15 @@
                         <form method="POST">
                             {{csrf_field()}}
                             <div class="form-check form-check-danger mb-2">
-                                <input class="form-check-input" name="customradio17" type="radio" id="customradio17" checked>
+                                <input class="form-check-input" name="payement_method" value="caisse" type="radio" id="customradio17" checked>
                                 <label class="form-check-label" for="customradio17">Paiement au salon</label>
                             </div>
                             <div class="form-check form-check-danger mb-2">
-                                <input class="form-check-input" name="customradio17" type="radio" id="customradio17" >
+                                <input class="form-check-input" name="payement_method" value="paypal" type="radio" id="customradio17" >
                                 <label class="form-check-label" for="customradio17">Paypal</label>
                             </div>
                             <div class="form-check form-check-danger mb-2">
-                                <input class="form-check-input" name="customradio17" type="radio" id="customradio17" >
+                                <input class="form-check-input" name="payement_method" value="bank_transfert" type="radio" id="customradio17" >
                                 <label class="form-check-label" for="customradio17">Bank Transfer</label>
                             </div>
                             <div class="d-grid">

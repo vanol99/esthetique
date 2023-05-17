@@ -268,7 +268,7 @@ class helpers
         $user=$data['user'];
         $data_ = array('name' => $user->name.' '.$user->lastname,'reservation'=>$data['reservation'],
             'content' => $message_send,);
-        Mail::send(['text' => 'mail.reservation_init'], $data_, function ($message) use ($user, $subject, $message_send) {
+        Mail::send(['html' => 'mail.reservation_init'], $data_, function ($message) use ($user, $subject, $message_send) {
             $message->to($user->email, $user->name)->subject($subject);
             $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
         });
@@ -278,17 +278,28 @@ class helpers
     {
         $subject = $data['subject'];
         $message_send = $data['message'];
-        $user=$data['user'];
-        $data_ = array('name' => $user->name.' '.$user->lastname,'reservation'=>$data['reservation'],
+        $customer=$data['customer'];
+        $data_ = array('name' => $customer->name.' '.$customer->lastname,'reservation'=>$data['reservation'],
             'content' => $message_send,'prestations'=>$data['prestations']);
-        Mail::send(['text' => 'mail.reservation_active'], $data_, function ($message)
-        use ($user, $subject, $message_send) {
-            $message->to($user->email, $user->name)->subject($subject);
+        Mail::send(['html' => 'mail.reservation_active'], $data_, function ($message)
+        use ($customer, $subject, $message_send) {
+            $message->to($customer->email, $customer->name)->subject($subject);
             $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
         });
 
     }
+    public static function send_creation_account($data)
+    {
+        $user=$data['user'];
+        $data_ = array('name' => $user->name.' '.$user->lastname,'password'=>$data['password'],
+            'user' => $user);
+        Mail::send(['html' => 'mail.account'], $data_, function ($message)
+        use ($user) {
+            $message->to($user->email, $user->name)->subject("Creation du compte");
+            $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+        });
 
+    }
     public static  function remove_dir($dir) {
         if (is_dir($dir)) {
             $objects = scandir($dir);

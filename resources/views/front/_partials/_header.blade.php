@@ -80,7 +80,7 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a href="{{route('home')}}" class="nav-item nav-link active">Home</a>
                         <a href="{{route('startreservation')}}" class="nav-item nav-link">Reserver</a>
-
+                        <a href="{{route('product')}}" class="nav-item nav-link">Nos produits</a>
                         <a href="{{route('contact')}}" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
